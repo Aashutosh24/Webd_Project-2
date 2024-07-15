@@ -1,0 +1,51 @@
+/* CSS Reset */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/* CSS Variables */
+:root{
+    --navbar-height: 70px;
+}
+/* navigation bar */
+#navbar{
+    height: var(--navbar-height);
+    display: flex;
+    background-color: #FFD3B6;
+}
+/* navbar: logo img */
+#logo{
+    margin: 12px 8px;
+}
+#logo img{
+    width: 51px;
+    height: 49px;
+    border-radius: 25px;
+}
+/* Navbar:List */
+#navbar ul{
+    display: flex;
+    margin-left: 140px;
+}
+#navbar ul li{
+    list-style: none;
+    margin-top: 15px;
+    font-size: 2rem;
+}
+#navbar ul li a{
+    display: block;
+    text-decoration: none;
+    color: maroon;
+    padding: 4px 62px;
+}
+#navbar ul li a:hover{
+    color: rgb(163, 133, 123);
+    text-decoration: underline;
+    font-size: 2.2rem;
+    border-radius: 40px;
+}
+/* Home section */
+#Home{
+    display: flex;
+    flex-direction: column;
+}
