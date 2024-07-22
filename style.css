@@ -47,15 +47,66 @@
 /* Main BG */
 #Home::before{
     content: "";
-    background: url('bg1.jpg');
+    position: absolute;
+    background: url('bg1.jpg') no-repeat center center;
+    background-size: cover;
     height: 100%;
     width: 100%;
+    z-index: -1;
+    opacity: 0.87;
+    background-repeat: no-repeat;
 }
 /* Home section */
 #Home{
     display: flex;
     flex-direction: column;
-    padding: 10px 233px;
+    padding: 175px 225px;
     justify-content: center;
     align-items: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    color: rgb(7, 3, 246);
+    height: 387px;
+}
+/* utility class */
+.h-primary{
+    padding-left:160px;
+    font-size: 2.8rem;
+    color: lightgoldenrodyellow;
+    text-transform: uppercase;
+}
+.h-primary::first-letter{
+    font-size: 5rem;
+}
+
+#Home p{
+    font-size: 25px;
+    text-align: center;
+}
+/* Applying the general style */
+.custom-text {
+    font-size: 16px; /* Base font size */
+    text-transform: uppercase; /* Makes all text uppercase */
+}
+
+/* Targeting the first letter of each word */
+.custom-text span::first-letter {
+    font-size: 24px; /* Larger font size for the first letter */
+}
+
+/* Applying the general style */
+.custom-text {
+    text-transform: uppercase; /* Makes all text uppercase */
+    font-size: 1em; /* Base font size */
+}
+
+/* Targeting the first letter of each word */
+.custom-text span::first-letter {
+    font-size: 2em; /* Larger font size for the first letter */
+    line-height: 1em; /* Ensures the first letter aligns properly */
+}
+
+.custom-text span {
+    display: inline-block; /* Ensures ::first-letter works on each word */
+    font-size: 0.5em; /* Smaller size for the rest of the text */
 }
