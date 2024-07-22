@@ -44,8 +44,18 @@
     font-size: 2.2rem;
     border-radius: 40px;
 }
+/* Main BG */
+#Home::before{
+    content: "";
+    background: url('bg1.jpg');
+    height: 100%;
+    width: 100%;
+}
 /* Home section */
 #Home{
     display: flex;
     flex-direction: column;
+    padding: 10px 233px;
+    justify-content: center;
+    align-items: center;
 }
