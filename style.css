@@ -70,43 +70,19 @@
 }
 /* utility class */
 .h-primary{
-    padding-left:160px;
+    /* padding-left:160px; */
+    /* width: 1800px; */
+    display: inline-block;
     font-size: 2.8rem;
     color: lightgoldenrodyellow;
     text-transform: uppercase;
 }
 .h-primary::first-letter{
     font-size: 5rem;
+    line-height: 1em;
 }
 
 #Home p{
     font-size: 25px;
     text-align: center;
-}
-/* Applying the general style */
-.custom-text {
-    font-size: 16px; /* Base font size */
-    text-transform: uppercase; /* Makes all text uppercase */
-}
-
-/* Targeting the first letter of each word */
-.custom-text span::first-letter {
-    font-size: 24px; /* Larger font size for the first letter */
-}
-
-/* Applying the general style */
-.custom-text {
-    text-transform: uppercase; /* Makes all text uppercase */
-    font-size: 1em; /* Base font size */
-}
-
-/* Targeting the first letter of each word */
-.custom-text span::first-letter {
-    font-size: 2em; /* Larger font size for the first letter */
-    line-height: 1em; /* Ensures the first letter aligns properly */
-}
-
-.custom-text span {
-    display: inline-block; /* Ensures ::first-letter works on each word */
-    font-size: 0.5em; /* Smaller size for the rest of the text */
 }
