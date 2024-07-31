@@ -56,7 +56,7 @@
     background-size: cover;
     height: 100%;
     width: 100%;
-    top:65px;
+    /* top:65px; */
     z-index: -1;
     opacity: 0.87;
     background-repeat: no-repeat;
@@ -68,6 +68,7 @@
     padding: 135px 220px;
     justify-content: center;
     align-items: center;
+    position: relative;
     font-family: "Roboto Mono", monospace;
     font-weight: 500;
     color: #F6FB7A;
@@ -105,11 +106,39 @@ button{
     animation-delay: 1s;
     animation-iteration-count: 2;
 }
+/* about */
 #AboutUs{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+/* contact */
+#ContactUs{
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid brown;
+    border-radius: 33px;
+    margin-left: 555px;
+    margin-right: 565px;
+    background-color:  rgb(255, 247, 233);
+}
+#ContactUs h2{  
+    color: cornflowerblue;
+    text-shadow: 3px 3px lawngreen;
+}
+footer{
+    background: #000;
+    color: #fff;
+    width: 500px;
+    text-align: center;
+    display: block;
+    margin: auto;
 }
 /* button animation */
 @keyframes button{
@@ -120,11 +149,12 @@ button{
     }
     to{
         color: yellow;
-        width: 200px;}
+        width: 200px;
     }
-    /* utility class */
-    .header-row{
-        display: flex;
+}
+/* utility class */
+.header-row{
+    display: flex;
 }
 .h-primary::first-letter{
     font-size: 5rem;
@@ -204,22 +234,34 @@ button{
     border-radius: 22px;
     color: black;
     line-height: 1.5em;
-    margin: 0px 660px;
+    margin: 0px 400px;
     background-color: #2b94de59;
 }
 #AboutUs img{
     width: 100px;
     position: relative;
-    top: 120px;
-    right: 300px;
+    top: 100px;
+    right: 360px;
     border:2px solid black;
     border-radius: 7px;
 }
 #AboutUs p{
+    box-shadow: 16px 16px 4px 4px lightblue;
+    width: 500px;
+    height: 300px;
     font-size: var(--font-family);
     padding-left: 400px;
 }
 #AboutUs p , #AboutUs img{
 border-radius: 30px;
 background-color: sandybrown;
+}
+.contact{
+    line-height: 2em;
+}
+#query{
+    box-sizing: border-box;
+}
+input[type=button]{
+    margin: 0px 80px;
 }
