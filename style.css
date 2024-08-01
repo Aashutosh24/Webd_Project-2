@@ -101,6 +101,7 @@ button{
     border-radius: 5px;
     position: fixed;
     width: 200px;
+    z-index: 1;
     animation-name: button;
     animation-duration: 4s;
     animation-delay: 1s;
