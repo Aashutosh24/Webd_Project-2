@@ -89,7 +89,7 @@ h2{
     justify-content: center;
     text-shadow: 2px 1px cyan;
 }
-/* button  */
+/* Order button  */
 .order{
     background: none;
     position: absolute;
@@ -235,7 +235,7 @@ footer{
 #AboutUs h2{
     border-radius: 22px;
     color: black;
-    line-height: 1.5em;
+    line-height: 1.2em;
     margin: 0px 400px;
     background-color: #2b94de59;
 }
@@ -244,11 +244,13 @@ footer{
     position: relative;
     top: 100px;
     right: 360px;
-    border:2px solid black;
-    border-radius: 7px;
+    border:2px solid rgb(39, 25, 25);
+    border-radius: 4px;
+    padding: 15px;
 }
 #AboutUs p{
-    box-shadow: 10px 9px 4px 4px rgb(212, 91, 91);
+    /* 0px 0px is used to spread all */
+    box-shadow: 0px 0px 2px 6px rgb(212, 91, 91);/* 0px 0px is used to spread all */
     width: 500px;
     height: 300px;
     font-size: var(--font-family);
@@ -256,7 +258,6 @@ footer{
 }
 #AboutUs p , #AboutUs img{
 border-radius: 30px;
-background-color: sandybrown;
 background-color: rgb(245, 255, 136);
 }
 .contact{
@@ -268,7 +269,13 @@ background-color: rgb(245, 255, 136);
 input[type=button]{
     display: block;
     margin: auto;
+    background-color: #284a68dc;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+
 }
-.btn btn-dark{
-    position: absolute;
+input[type=button]:hover{
+    opacity: 0.7;
 }
