@@ -89,7 +89,8 @@ h2{
     justify-content: center;
     text-shadow: 2px 1px cyan;
 }
-button{
+/* button  */
+.order{
     background: none;
     position: absolute;
     right:10px;
@@ -247,7 +248,7 @@ footer{
     border-radius: 7px;
 }
 #AboutUs p{
-    box-shadow: 16px 16px 4px 4px lightblue;
+    box-shadow: 10px 9px 4px 4px rgb(212, 91, 91);
     width: 500px;
     height: 300px;
     font-size: var(--font-family);
@@ -256,13 +257,18 @@ footer{
 #AboutUs p , #AboutUs img{
 border-radius: 30px;
 background-color: sandybrown;
+background-color: rgb(245, 255, 136);
 }
 .contact{
     line-height: 2em;
 }
 #query{
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 input[type=button]{
-    margin: 0px 80px;
+    display: block;
+    margin: auto;
+}
+.btn btn-dark{
+    position: absolute;
 }
