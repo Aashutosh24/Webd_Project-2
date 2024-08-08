@@ -271,7 +271,7 @@ footer{
     width: 500px;
     height: 300px;
     font-size: var(--font-family);
-    padding-left: 400px;
+    padding-left: 200px;
 }
 #AboutUs p , #AboutUs img{
 border-radius: 30px;
