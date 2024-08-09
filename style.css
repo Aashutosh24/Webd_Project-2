@@ -10,7 +10,7 @@
 }
 /* navigation bar */
 #navbar{
-    height: var(--navbar-height);
+    /* height: var(--navbar-height); */
     display: flex;
     background-color: #FFD3B6;
 }

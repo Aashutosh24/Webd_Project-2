@@ -1,10 +1,5 @@
-/* Navigation */
- /* #navbar{
-    /* flex-direction: column; */
-    /* width: 100%; */
-    /* height: 90px; 
-} */ 
 #navbar ul{
+    width: 100%;
     margin-left: 2px;
     font-size: 1em;
     display: flex;
@@ -22,11 +17,11 @@
     position: relative;
     width: 90%;
     text-align: left;
-    height:325px;
-    padding: 85px 30px;
+    height:320px;
+    padding: 95px 21px;
 }
 #Home::before{
-    height: 500px;
+    height: 510px;
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -34,10 +29,28 @@
 /* aside button */
 .order{
     position: absolute;
-    right: 6px;
-    top: 90px;
-    font-size: 2.3em;
-    
+    right: 0px;
+    top: 92px;
+    font-size: 1.5em;  
+    width: 140px;
+    animation-name: order;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+}
+/* button animation */
+@keyframes order{
+    from{
+        color: white;
+        width:5px;
+        background: black;
+        font-size: 1.2em;
+    }
+    to{
+        color: yellow;
+        width: 140px;
+        font-size: 1.5em;
+    }
 }
 /* Services Section */
 #Services .box{
@@ -46,23 +59,13 @@
 }
 
 /* Aboutus Section */
-#AboutUs{
-    width: 70%;
-    margin: 20px 20px;
-    margin-left: 80px;
-}
-#AboutUs p{
-    font-size: 1rem;
-    height: 70%;
-    width: 90%;
-    padding-left: 150px;
-}
 #AboutUs img{
+    width: 7%;
     display: block;
-    position: absolute;
-    left: 2em;
-    top: 2400px;
-    visibility: hidden;
+    position: relative;
+    left: -36em;
+    top: 70em;
+    font-size: .2em;
 }
 /* Contactus Section */
 #ContactUs{
@@ -72,10 +75,13 @@
     padding: 10px;
 }
 /* Footer Section */
-
+footer{
+    font-size: 0.8em;
+}
 /* Utility classes */
 .h-primary{
     font-size: 1rem;
+        color: floralwhite;
 }
 .h-primary::first-letter{
     font-size: 2rem;
@@ -90,13 +96,25 @@
 }
 .box img{
     position: relative;
-    left: 0.7em;
+    left: 1.7em;
 }
 h2{
     font-size: 2em;
 }
 #AboutUs h2{
-    font-size: 2em;
+    font-size: 1.2em;
     display: inline-block;
     margin: auto;
+}
+#AboutUs{
+
+    width: 70%;
+    margin: 20px 20px;
+    margin-left: 45px;
+}
+#AboutUs p{
+    font-size: 1rem;
+    height: 70%;
+    width: 80%;
+    padding-left: 80px;
 }
