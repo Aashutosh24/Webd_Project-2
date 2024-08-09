@@ -23,7 +23,7 @@
     width: 90%;
     text-align: left;
     height:325px;
-    padding: 85px 30px;
+    padding: 85px 40px;
 }
 #Home::before{
     height: 500px;
@@ -34,7 +34,7 @@
 /* aside button */
 .order{
     position: absolute;
-    right: 6px;
+    right: 16px;
     top: 90px;
     font-size: 2.3em;
     
@@ -66,9 +66,9 @@
 }
 /* Contactus Section */
 #ContactUs{
-    font-size: 0.8rem;
-    margin-left: 44px;
-    margin-right: 44px;
+    font-size: 1rem;
+    margin-left: 224px;
+    margin-right: 224px;
     padding: 10px;
 }
 /* Footer Section */
@@ -99,4 +99,7 @@ h2{
     font-size: 2em;
     display: inline-block;
     margin: auto;
+}
+.order{
+    position: fixed;
 }

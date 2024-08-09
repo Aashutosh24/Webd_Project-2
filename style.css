@@ -8,11 +8,18 @@
     --navbar-height: 70px;
     --font-family: "Roboto Mono", monospace;
 }
+html{
+    scroll-behavior: smooth;
+}
 /* navigation bar */
 #navbar{
     /* height: var(--navbar-height); */
     display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
     background-color: #FFD3B6;
+    z-index: 1;
 }
 /* navbar: logo img */
 #logo{
@@ -102,7 +109,7 @@ h2{
     background-color: rgb(249, 61, 61);
     cursor: pointer;
     border-radius: 5px;
-    position: fixed;
+    position: fixed; 
     width: 200px;
     z-index: 1;
     animation-name: button;
