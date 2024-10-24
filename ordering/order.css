@@ -14,11 +14,29 @@ button:hover{
 }
 .contai{
     display: grid;
-    grid-template-columns: repeat(4, 310px);
-    grid-template-rows: repeat(3, 250px);
+    grid-template-columns: repeat(3, 27rem);
+    grid-template-rows: repeat(4, 17rem);
     grid-gap: 4rem;
 }
 .restu{
-    border: 2px solid red;
+    border: 2px solid rgb(108, 121, 152);
+    border-radius: 5px;
     text-align: center;
+    background-color: #b6ffe37a;
+}
+.restu p{
+    border: 3px solid red;
+    border-radius: 18px;
+    box-shadow: -6px 4px 6px greenyellow;
+    margin: 10px;
+    height: 80%;
+}
+.restu p img{
+    border: 1px solid lightblue;
+    border-radius: 14px;
+    float: left;
+    height: 80%;
+    width: 45%;
+    margin-left: 6px;
+    margin-top: 8px;
 }
