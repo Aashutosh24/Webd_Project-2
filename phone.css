@@ -82,7 +82,7 @@ footer{
 /* Utility classes */
 .h-primary{
     font-size: 1rem;
-        color: floralwhite;
+    color: floralwhite;
 }
 .h-primary::first-letter{
     font-size: 2rem;
@@ -108,7 +108,6 @@ h2{
     margin: auto;
 }
 #AboutUs{
-
     width: 70%;
     margin: 20px 20px;
     margin-left: 45px;

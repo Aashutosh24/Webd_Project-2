@@ -15,9 +15,9 @@ button:hover{
 }
 .contai{
     display: grid;
-    grid-template-columns: repeat(3, 27rem);
-    grid-template-rows: repeat(4, 17rem);
-    grid-gap: 4rem;
+    grid-template-columns: repeat(3, 29rem);
+    grid-template-rows: repeat(4, 22rem);
+    grid-gap: 3rem;
 }
 .restu{
     border: 2px solid rgb(108, 121, 152);
@@ -26,18 +26,39 @@ button:hover{
     background-color: #b6ffe37a;
 }
 .restu p{
-    border: 3px solid red;
-    border-radius: 18px;
-    box-shadow: -6px 4px 6px greenyellow;
-    margin: 10px;
+    /* border: 3px solid red; */
+    border-radius: 20px;
+    /* box-shadow: -6px 4px 6px greenyellow; */
+    /* margin: 10px; */
     height: 80%;
 }
 .restu p img{
-    border: 1px solid lightblue;
+    /* border: 1px solid lightblue; */
     border-radius: 14px;
-    float: left;
-    height: 85%;
-    width: 45%;
-    margin-left: 10px;
+    /* float: left; */
+    height: 95%;
+    width: 96%;
+    /* margin-left: 10px; */
+    /* justify-content: center; */
     margin-top: 8px;
+}
+#Rest8 span h5, #Rest8 span p{
+    background-color: burlywood;
+    opacity: 0.7;
+    position: relative;
+    top: -150px;
+    z-index: 1;
+    width: 90%;
+    margin-left: 22px;
+    height: 35%;
+}
+#Rest8 img{
+        border: 1px solid lightblue;
+        border-radius: 14px;
+        /* float: left; */
+        height: 95%;
+        width: 96%;
+        /* margin-left: 10px; */
+        justify-content: center;
+        margin-top: 8px;
 }
