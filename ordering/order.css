@@ -24,9 +24,10 @@ button:hover{
     border-radius: 5px;
     text-align: center;
     background-color: #b6ffe37a;
+    cursor: pointer;
 }
-.restu p img:hover{
-    width: 26em;
+.restu:hover{
+    margin: 10px;
 }
 .restu p{
     /* border: 3px solid red; */
@@ -38,6 +39,8 @@ button:hover{
 .restu p img{
     /* border: 1px solid lightblue; */
     border-radius: 14px;
+    position: relative;
+    top: -20px;
     /* float: left; */
     height: 95%;
     width: 96%;
@@ -45,11 +48,11 @@ button:hover{
     /* justify-content: center; */
     margin-top: 8px;
 }
-#Rest8 span h5, #Rest8 span p{
-    background-color: burlywood;
-    opacity: 0.7;
+#Rest8 span h4, #Rest8 span p{
+    /* background-color: burlywood; 
+    opacity: 0.7;*/
     position: relative;
-    /* top: -150px; */
+    top: -40px; 
     z-index: 1;
     width: 90%;
     margin-left: 22px;
