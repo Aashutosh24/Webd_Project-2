@@ -49,8 +49,8 @@ button:hover{
     margin-top: 8px;
 }
 #Rest8 span h4, #Rest8 span p{
-    /* background-color: burlywood; 
-    opacity: 0.7;*/
+    /* background-color: burlywood; */
+    opacity: 0.7;
     position: relative;
     top: -40px; 
     z-index: 1;
@@ -59,6 +59,10 @@ button:hover{
     height: 35%;
     right: 100px;
 }
+/* #Rest8 p{
+    position: relative;
+    top: -200px;
+} */
 #Rest8 img{
         border: 1px solid lightblue;
         border-radius: 14px;
