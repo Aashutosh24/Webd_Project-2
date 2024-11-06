@@ -59,10 +59,11 @@ button:hover{
     height: 35%;
     right: 100px;
 }
-/* #Rest8 p{
+.st{
+    display: inline-block;
     position: relative;
     top: -200px;
-} */
+}
 #Rest8 img{
         border: 1px solid lightblue;
         border-radius: 14px;
