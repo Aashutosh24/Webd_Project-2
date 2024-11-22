@@ -60,10 +60,17 @@ button:hover{
     right: 100px;
 }
 .st{
+    color: #ffffff;
+    height: auto;
     display: inline-block;
     position: relative;
-    top: -200px;
+    top: -175px;
+    background-color: rgb(144, 127, 127);
+    border-radius: 2px;
+    padding: 4px;
+    left: 184px;
 }
+
 #Rest8 img{
         border: 1px solid lightblue;
         border-radius: 14px;
