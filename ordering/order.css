@@ -70,13 +70,12 @@ h1{
     height: auto;
     display: inline-block;
     position: relative;
-    top: -175px;
-    background-color: rgb(144, 127, 127);
+    top: -30px;
+    background-color: #4DA1A9;
     border-radius: 2px;
     padding: 4px;
-    left: 184px;
+    left: 136px;
 }
-
 #Rest8 img{
         border: 1px solid lightblue;
         border-radius: 14px;
