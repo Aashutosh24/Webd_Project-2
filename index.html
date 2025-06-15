@@ -89,7 +89,7 @@
     <section id="ContactUs">
         <h2>Contact Us</h2>
         <div class="contact">
-            <form action="">
+            <!-- <form action="">
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name" placeholder="Enter your Name">
@@ -110,13 +110,57 @@
                   </div>
                 
         <input type="button" value="Submit" ><br>
-    </form>
-
+    </form> -->
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+      
+        <label for="phoneno">Phone No:</label>
+        <input type="tel" id="phoneno" name="phoneno" required><br>
+      
+        <label for="query">Message:</label><br>
+        <textarea id="query" name="query" rows="4" required></textarea><br>
+      
+        <input type="submit" value="Submit">
+      </form>
+      
         </div>
     </section>
 
     <br>
     <footer> Copywrite &copy; www.Foodin30.com &nbsp; All Rights are Resvered!</footer>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+        
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phoneno: document.getElementById("phoneno").value,
+                query: document.getElementById("query").value,
+            };
+        
+            try {
+                const res = await fetch("http://localhost:5000/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+        
+                const result = await res.json();
+                alert(result.message);
+                document.getElementById("contact-form").reset();
+            } catch (error) {
+                alert("Something went wrong!");
+                console.error(error);
+            }
+        });
+        </script>
+        
 </body>
 
 </html>
