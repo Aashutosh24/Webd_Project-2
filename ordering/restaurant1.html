@@ -3,29 +3,43 @@
 <head>
     <title>A3Z Restaurant-1 Menu</title>
     <link rel="stylesheet" href="order.css">
+    <!-- Add this line to include Font Awesome for the cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>A3Z Restaurant-1 Menu</h1>
+    <header>
+        <h1>A3Z Restaurant-1 Menu</h1>
+        <div class="cart-icon">
+            <a href="#" id="cart-button">
+                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
+                <span id="cart-count">0</span> <!-- Element to display cart count -->
+            </a>
+        </div>
+    </header>
+
 <div class="food-items-container">
     <div class="food-item">
         <img src="placeholder.jpg" alt="Butter Chicken">
         <h2>Butter Chicken</h2>
-        <p>Creamy and flavorful butter chicken.</p>
-        <p>Price: $12.99</p>
+        <p class="description">Creamy and flavorful butter chicken.</p>
+        <p class="price">Price: $12.99</p>
+        <button class="addtocart" data-name="Butter Chicken" data-price="12.99">Add to cart</button>
     </div>
 
     <div class="food-item">
         <img src="placeholder.jpg" alt="Gulab Jamun">
         <h2>Gulab Jamun</h2>
-        <p>Sweet milk-solid-based dessert.</p>
-        <p>Price: $5.99</p>
+        <p class="description">Sweet milk-solid-based dessert.</p>
+        <p class="price">Price: $5.99</p>
+        <button class="addtocart" data-name="Gulab Jamun" data-price="5.99">Add to cart</button>
     </div>
 
     <div class="food-item">
         <img src="placeholder.jpg" alt="Chicken Tikka Masala">
         <h2>Chicken Tikka Masala</h2>
-        <p>Grilled chicken in a spiced tomato-based sauce.</p>
-        <p>Price: $13.99</p>
+        <p class="description">Grilled chicken in a spiced tomato-based sauce.</p>
+        <p class="price">Price: $13.99</p>
+        <button class="addtocart" data-name="Chicken Tikka Masala" data-price="13.99">Add to cart</button>
     </div>
 
     <!-- Add more food items here -->
@@ -34,5 +48,7 @@
     <footer>
         <p>&copy; 2023 A3Z Restaurant-1. All rights reserved.</p>
     </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>

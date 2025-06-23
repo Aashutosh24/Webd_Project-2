@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="order.css"> <!-- You can reuse your existing CSS or create a new one -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Basic styling for the cart page (you can add more to order.css or a new cart.css) */
+        .cart-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 4px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-details h3 {
+            margin: 0 0 5px 0;
+        }
+
+        .item-details p {
+            margin: 0 0 5px 0;
+            color: #555;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .item-quantity input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .item-subtotal {
+            font-weight: bold;
+        }
+
+        .cart-summary {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 1.2em;
+        }
+
+        .cart-summary h3 {
+            margin: 0;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .checkout-button:hover {
+            background-color: #45a049;
+        }
+        #message-area {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333; /* Or your desired background color */
+        color: white; /*Or your desired text color */
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        opacity: 2;
+        /* transition: opacity 0.5s ease-in-out; Added ease-in-out for smoother transition  */
+    } 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <div class="cart-icon">
+            <a href="#" id="cart-button">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="cart-container">
+        <div id="cart-items">
+            <!-- Cart items will be loaded here by JavaScript -->
+            <p>Your cart is empty.</p>
+        </div>
+
+        <div class="cart-summary">
+            <h3>Total: $<span id="cart-total">0.00</span></h3>
+        </div>
+
+        <button class="checkout-button">Proceed to Checkout (Placeholder)</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Your Restaurant Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function displayCartItems() {
+            const userId = 'user123'; // Replace with a dynamic user ID later
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartCountElement = document.getElementById('cart-count');
+
+            cartItemsContainer.innerHTML = ''; // Clear existing items
+
+            try {
+                const response = await fetch(`http://localhost:3000/cart/${userId}`);
+                const data = await response.json();
+
+                if (response.ok && data.cart && data.cart.items.length > 0) {
+                    let total = 0;
+                    let totalItems = 0;
+
+                    data.cart.items.forEach(item => {
+                        const itemElement = document.createElement('div');
+                        itemElement.classList.add('cart-item');
+                        itemElement.dataset.itemName = item.name; // Store item name in a data attribute
+
+                        const itemSubtotal = item.price * item.quantity;
+                        total += itemSubtotal;
+                        totalItems += item.quantity;
+
+                        itemElement.innerHTML = `
+                            <img src="placeholder.jpg" alt="${item.name}"> <!-- Replace with actual image path if available in cart data -->
+                            <div class="item-details">
+                                <h3>${item.name}</h3>
+                                <p>Price: $${item.price.toFixed(2)}</p>
+                            </div>
+                            <div class="item-quantity">
+                                <button class="decrease-quantity">-</button>
+                                <input type="number" value="${item.quantity}" min="1" data-item-name="${item.name}"> <!-- Store item name in data attribute -->
+                                <button class="increase-quantity">+</button>
+                            </div>
+                            <div class="item-subtotal">
+                                $${itemSubtotal.toFixed(2)}
+                            </div>
+                            <button class="remove-item" data-item-name="${item.name}">Remove</button> <!-- Store item name in data attribute -->
+                        `;
+                        cartItemsContainer.appendChild(itemElement);
+                    });
+
+                    cartTotalElement.textContent = total.toFixed(2);
+                     if (cartCountElement) {
+                        cartCountElement.textContent = totalItems;
+                    }
+
+                    // Add event listeners after items are displayed
+                    addCartItemEventListeners();
+
+                } else {
+                    cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    cartTotalElement.textContent = '0.00';
+                     if (cartCountElement) {
+                        cartCountElement.textContent = '0';
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching cart items:', error);
+                cartItemsContainer.innerHTML = '<p>Error loading cart.</p>';
+                cartTotalElement.textContent = '0.00';
+                 if (cartCountElement) {
+                    cartCountElement.textContent = '0';
+                }
+            }
+        }
+
+         // Function to add event listeners to cart item buttons
+        function addCartItemEventListeners() {
+            // Event listener for increase quantity buttons
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const input = button.previousElementSibling;
+                    const itemName = input.dataset.itemName;
+                    const currentQuantity = parseInt(input.value);
+                    const newQuantity = currentQuantity + 1;
+                     await updateItemQuantity(itemName, newQuantity);
+                     showMessage(`${itemName} quantity updated.`); // Basic message for now
+                });
+            });
+
+            // Event listener for decrease quantity buttons
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const input = button.nextElementSibling;
+                    const itemName = input.dataset.itemName;
+                    const currentQuantity = parseInt(input.value);
+                    const newQuantity = currentQuantity - 1;
+
+                    if (newQuantity > 0) {
+                         await updateItemQuantity(itemName, newQuantity);
+                         showMessage(`${itemName} quantity updated.`); // Basic message for now
+                    } else {
+                        // If quantity becomes 0, remove the item
+                        await removeItem(itemName);
+                        showMessage(`${itemName} removed.`, true); // Show removing message
+                    }
+                });
+            });
+
+            // Event listener for remove item buttons
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const itemName = button.dataset.itemName;
+                    await removeItem(itemName);
+                    showMessage(`${itemName} removed.`, true); // Show removing message
+                });
+            });
+        }
+
+        // Function to update item quantity via the backend
+        async function updateItemQuantity(itemName, quantity) {
+            const userId = 'user123'; // Replace with a dynamic user ID later
+            try {
+                const response = await fetch(`http://localhost:3000/cart/update/${userId}/${itemName}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ quantity: quantity })
+                });
+
+                if (response.ok) {
+                    // After successful update, re-display the cart
+                    displayCartItems();
+                } else {
+                    const data = await response.json();
+                    alert(`Error updating item quantity: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Error updating item quantity:', error);
+                alert('An error occurred while updating item quantity.');
+            }
+        }
+
+        // Function to remove item via the backend
+        async function removeItem(itemName) {
+             const userId = 'user123'; // Replace with a dynamic user ID later
+            try {
+                const response = await fetch(`http://localhost:3000/cart/remove/${userId}/${itemName}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    // After successful removal, re-display the cart
+                    displayCartItems();
+                } else {
+                    const data = await response.json();
+                    alert(`Error removing item: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Error removing item:', error);
+                alert('An error occurred while removing item.');
+            }
+        }
+
+        // Function to display temporary messages
+        function showMessage(message, autoHide = false) {
+    // You need an element in your HTML to display messages.
+    // Let's add a message area just below the header.
+    let messageArea = document.getElementById('message-area');
+    if (!messageArea) {
+        messageArea = document.createElement('div');
+        messageArea.id = 'message-area';
+        // It's better to define styles in a CSS file, but for demonstration:
+        messageArea.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #333; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000; opacity: 0; transition: opacity 0.5s ease-in-out;'; // Added ease-in-out
+        document.body.appendChild(messageArea);
+    }
+
+    messageArea.textContent = message;
+    messageArea.style.opacity = 1; // Make the message visible
+
+    if (autoHide) {
+        // Set opacity to 0 after the specified delay to start the fade-out
+        setTimeout(() => {
+            messageArea.style.opacity = 0; // <-- Corrected to 0
+        }, 3000); // Set the desired delay before fading out (e.g., 3000ms for 3 seconds)
+    }
+}
+
+
+
+        // Call the function to display cart items when the page loads
+        displayCartItems();
+
+        // Add event listener for the cart button in the header (if you have one)
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+            cartButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                 window.location.reload(); // Example: reload the cart page
+            });
+        }
+
+         // Function to update the cart count in the header (reused from restaurant pages)
+        async function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (!cartCountElement) {
+                console.warn("Cart count element with ID 'cart-count' not found.");
+                return;
+            }
+
+            const userId = 'user123'; // Replace with a dynamic user ID later
+
+            try {
+                const response = await fetch(`http://localhost:3000/cart/${userId}`);
+                const data = await response.json();
+
+                if (response.ok && data.cart) {
+                    const totalItems = data.cart.items.reduce((sum, item) => sum + item.quantity, 0);
+                    cartCountElement.textContent = totalItems;
+                } else {
+                    cartCountElement.textContent = '0';
+                }
+            } catch (error) {
+                console.error('Error fetching cart count:', error);
+                cartCountElement.textContent = '0';
+            }
+        }
+        // Call updateCartCount on page load to display the initial count
+        updateCartCount();
+
+
+    </script>
+</body>
+</html>

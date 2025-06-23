@@ -152,4 +152,16 @@ h1{
     color: #007bff;
     margin-top: auto; /* Pushes the price to the bottom */
 }
-
+.addtocart{
+    width: 43%;
+    padding: 8px;
+    margin: 2px auto;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: red;
+    color: yellow;
+}
+.addtocart.clicked {
+  background-color: darkturquoise;
+  color: white;
+}
