@@ -10,7 +10,9 @@
         <h1>A3Z Restaurant-1 Menu</h1>
         <div class="cart-icon">
             <a href="#" id="cart-button">
-                <i class="fas fa-shopping-cart"></i> <!-- Font Awesome shopping cart icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="RED" class="bi bi-cart-fill" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+</svg><!-- Font Awesome shopping cart icon -->
                 <span id="cart-count">0</span> <!-- Element to display cart count -->
             </a>
         </div>
@@ -18,7 +20,7 @@
 
 <div class="food-items-container">
     <div class="food-item">
-        <img src="Img/butter_chicken.jpg" alt="Butter Chicken" >
+        <img src="Img/butter chicken.jpg" alt="Butter Chicken" >
         <h2>Butter Chicken</h2>
         <p class="description">Creamy and flavorful butter chicken.</p>
         <p class="price">Price: ₹80.00</p>
@@ -26,18 +28,25 @@
     </div>
 
     <div class="food-item">
-        <img src="Img/gulab_jamun.jpg" alt="Gulab Jamun">
+        <img src="Img/gulab jamun.jpg" alt="Gulab Jamun">
         <h2>Gulab Jamun</h2>
         <p class="description">Sweet milk-solid-based dessert.</p>
         <p class="price">Price: ₹10.00</p>
         <button class="addtocart" data-name="Gulab Jamun" data-price="10.00">Add to cart</button>
     </div>
     <div class="food-item">
-        <img src="Img/chole_bhature.webp" alt="Chole Bhature">
+        <img src="Img/chole bhature.jpg" alt="Chole Bhature">
         <h2>Chole Bhature</h2>
         <p class="description">Spicy chickpeas served with deep-fried bread.</p>
         <p class="price">Price: ₹60.00</p>
-        <button class="addtocart" data-name="Chole Bature" data-price="60.00">Add to cart</button>
+        <button class="addtocart" data-name="Chole Bhature" data-price="60.00">Add to cart</button>
+    </div>
+    <div class="food-item">
+        <img src="Img/dosa.jpg" alt="Dosa">
+        <h2>Dosa</h2>
+        <p class="description">Crispy rice crepe served with chutney.</p>
+        <p class="price">Price: ₹40.00</p>
+        <button class="addtocart" data-name="Dosa" data-price="40.00">Add to cart</button>
     </div>
     <div class="food-item">
         <img src="placeholder.jpg" alt="Chicken Tikka Masala">
@@ -50,7 +59,7 @@
     <!-- Add more food items here -->
 </div>
 
-    <footer>
+    <footer class="footer_restaurant">
         <p>&copy; 2023 A3Z Restaurant-1. All rights reserved.</p>
     </footer>
 

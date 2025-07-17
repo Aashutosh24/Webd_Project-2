@@ -1,3 +1,8 @@
-{"userId":"user123","items":[],"_id":"RB5HhuZhRKyuw3oH"}
-{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":1}],"_id":"RB5HhuZhRKyuw3oH"}
-{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":2},{"name":"Chole Bhature","price":60,"quantity":1},{"name":"Gulab Jamun","price":10,"quantity":1}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":2},{"name":"Chole Bhature","price":60,"quantity":1},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":2},{"name":"Chole Bhature","price":60,"quantity":2},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":3},{"name":"Chole Bhature","price":60,"quantity":2},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":3},{"name":"Chole Bhature","price":60,"quantity":1},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Butter Chicken","price":12.99,"quantity":3},{"name":"Dosa","price":40,"quantity":3},{"name":"Chole Bhature","price":60,"quantity":2},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Dosa","price":40,"quantity":3},{"name":"Chole Bhature","price":60,"quantity":2},{"name":"Gulab Jamun","price":10,"quantity":2}],"_id":"RB5HhuZhRKyuw3oH"}
+{"userId":"user123","items":[{"name":"Dosa","price":40,"quantity":3},{"name":"Chole Bhature","price":60,"quantity":2},{"name":"Gulab Jamun","price":10,"quantity":2},{"name":"Cheesecake","price":27,"quantity":1}],"_id":"RB5HhuZhRKyuw3oH"}

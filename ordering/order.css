@@ -164,3 +164,30 @@ h1{
   background-color: darkturquoise;
   color: white;
 }
+.addtocart:hover {
+    background-color: #ff6347; /* Tomato color on hover */
+    color: white; /* Change text color to white on hover */
+}
+.cart-icon {
+    float: right;
+    position: relative;
+    bottom: 1.3em;
+}
+#cart-button {
+    text-decoration: none;
+
+}
+#cart-count{
+    position: relative;
+    bottom: 5px;
+    padding: 10px 10px;
+    color: royalblue;
+    font-size: 1.8rem;
+}
+.footer_restaurant {
+        position: relative;
+        margin: auto;
+        justify-content: center;
+        display: flex;
+        bottom: 0;
+    }
