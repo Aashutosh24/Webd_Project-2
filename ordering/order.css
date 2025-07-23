@@ -12,7 +12,8 @@ button:hover{
     opacity: 0.7;
 }
 h1{
-    margin-left: 20px;
+    justify-content: center;
+    display: flex;
 }
 .contai{
     display: grid;
@@ -118,6 +119,12 @@ h1{
     justify-content: space-between; /* Distribute space between elements */
     text-align: center; /* Center the text */
     height: fit-content;
+}
+.food-item:hover{
+    box-shadow: 2px 2px 4px 8px #465C88; 
+    transform: translateY(-2px); 
+    transition: all 0.3s ease; 
+    cursor: pointer;
 }
 .restu a {
     text-decoration: none; /* Remove underline from links */
