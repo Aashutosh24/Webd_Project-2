@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-    <h1>Restaurant-6 Menu</h1>
+    <h1>Italiano Cafe & Grill</h1>
     <div class="cart-icon">
             <a href="#" id="cart-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="RED" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -17,33 +17,184 @@
         </div>
     </header>
     <div class="food-items-container">
+    
+    <!-- BURGERS -->
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Pasta Carbonara">
-        <h2>Pasta Carbonara</h2>
-        <p>Classic Italian pasta dish.</p>
-        <p>Price: $13.50</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/vada.jpg" alt="Veg Burger">
+        <h2>Italian Veg Burger</h2>
+        <p>Grilled veggie patty with Italian herbs and cheese.</p>
+        <p>Price: ₹149.00</p>
+        <button class="addtocart" data-name="Italian Veg Burger" data-price="149">Add to cart</button>
     </div>
 
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Sweet and Sour Pork">
-        <h2>Sweet and Sour Pork</h2>
-        <p>Popular Chinese dish.</p>
-        <p>Price: $10.99</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/paneer_pizza.jpg" alt="Paneer Burger">
+        <h2>Paneer Italian Burger</h2>
+        <p>Grilled paneer patty with basil pesto and mozzarella.</p>
+        <p>Price: ₹169.00</p>
+        <button class="addtocart" data-name="Paneer Italian Burger" data-price="169">Add to cart</button>
     </div>
 
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Red Velvet Cake">
-        <h2>Red Velvet Cake</h2>
-        <p>Delicious red velvet cake.</p>
-        <p>Price: $5.50</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/butter chicken.jpg" alt="Chicken Burger">
+        <h2>Chicken Italian Burger</h2>
+        <p>Grilled chicken breast with Italian seasoning and cheese.</p>
+        <p>Price: ₹199.00</p>
+        <button class="addtocart" data-name="Chicken Italian Burger" data-price="199">Add to cart</button>
     </div>
 
-    <!-- Add more food items here -->
+    <!-- PIZZA (Popular in India) -->
+    <div class="food-item">
+        <img src="Img/paneer_pizza.jpg" alt="Margherita Pizza">
+        <h2>Margherita Pizza</h2>
+        <p>Classic pizza with tomato, mozzarella, and fresh basil.</p>
+        <p>Price: ₹299.00</p>
+        <button class="addtocart" data-name="Margherita Pizza" data-price="299">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/paneer_pizza.jpg" alt="Paneer Pizza">
+        <h2>Paneer Supreme Pizza</h2>
+        <p>Indian favorite with paneer, bell peppers, and onions.</p>
+        <p>Price: ₹379.00</p>
+        <button class="addtocart" data-name="Paneer Supreme Pizza" data-price="379">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/paneer_pizza.jpg" alt="Chicken Pizza">
+        <h2>Chicken Tikka Pizza</h2>
+        <p>Spiced chicken tikka with Indian herbs on pizza base.</p>
+        <p>Price: ₹399.00</p>
+        <button class="addtocart" data-name="Chicken Tikka Pizza" data-price="399">Add to cart</button>
+    </div>
+
+    <!-- PASTA (Simple & Popular) -->
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="Pasta Alfredo">
+        <h2>Creamy Alfredo Pasta</h2>
+        <p>Creamy white sauce pasta with herbs.</p>
+        <p>Price: ₹229.00</p>
+        <button class="addtocart" data-name="Creamy Alfredo Pasta" data-price="229">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="Pasta Arabiata">
+        <h2>Spicy Arabiata Pasta</h2>
+        <p>Tangy tomato sauce pasta with red chili flakes.</p>
+        <p>Price: ₹199.00</p>
+        <button class="addtocart" data-name="Spicy Arabiata Pasta" data-price="199">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="Pasta Paneer">
+        <h2>Paneer Pasta</h2>
+        <p>Italian pasta with Indian paneer in white sauce.</p>
+        <p>Price: ₹249.00</p>
+        <button class="addtocart" data-name="Paneer Pasta" data-price="249">Add to cart</button>
+    </div>
+
+    <!-- SANDWICHES & WRAPS -->
+    <div class="food-item">
+        <img src="Img/Spring Rolls.jpg" alt="Italian Sandwich">
+        <h2>Italian Grilled Sandwich</h2>
+        <p>Grilled sandwich with Italian herbs and cheese.</p>
+        <p>Price: ₹129.00</p>
+        <button class="addtocart" data-name="Italian Grilled Sandwich" data-price="129">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Spring Rolls.jpg" alt="Chicken Wrap">
+        <h2>Chicken Italian Wrap</h2>
+        <p>Grilled chicken wrap with Italian seasonings.</p>
+        <p>Price: ₹179.00</p>
+        <button class="addtocart" data-name="Chicken Italian Wrap" data-price="179">Add to cart</button>
+    </div>
+
+    <!-- GARLIC BREAD & SIDES -->
+    <div class="food-item">
+        <img src="Img/vada.jpg" alt="Garlic Bread">
+        <h2>Garlic Bread</h2>
+        <p>Crispy bread with garlic butter and herbs.</p>
+        <p>Price: ₹99.00</p>
+        <button class="addtocart" data-name="Garlic Bread" data-price="99">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/vada.jpg" alt="Cheesy Garlic Bread">
+        <h2>Cheesy Garlic Bread</h2>
+        <p>Garlic bread topped with melted mozzarella cheese.</p>
+        <p>Price: ₹149.00</p>
+        <button class="addtocart" data-name="Cheesy Garlic Bread" data-price="149">Add to cart</button>
+    </div>
+
+    <!-- BEVERAGES (Indian Preferences) -->
+    <div class="food-item">
+        <img src="Img/meals.jpeg" alt="Cold Coffee">
+        <h2>Italian Cold Coffee</h2>
+        <p>Rich cold coffee with whipped cream.</p>
+        <p>Price: ₹119.00</p>
+        <button class="addtocart" data-name="Italian Cold Coffee" data-price="119">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/meals.jpeg" alt="Hot Coffee">
+        <h2>Cappuccino</h2>
+        <p>Classic Italian coffee with steamed milk foam.</p>
+        <p>Price: ₹99.00</p>
+        <button class="addtocart" data-name="Cappuccino" data-price="99">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/meals.jpeg" alt="Fresh Lime Water">
+        <h2>Fresh Lime Water</h2>
+        <p>Refreshing lime water with mint.</p>
+        <p>Price: ₹49.00</p>
+        <button class="addtocart" data-name="Fresh Lime Water" data-price="49">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/meals.jpeg" alt="Soft Drink">
+        <h2>Soft Drink</h2>
+        <p>Chilled carbonated soft drink.</p>
+        <p>Price: ₹45.00</p>
+        <button class="addtocart" data-name="Soft Drink" data-price="45">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/meals.jpeg" alt="Masala Chai">
+        <h2>Masala Chai</h2>
+        <p>Traditional Indian spiced tea.</p>
+        <p>Price: ₹29.00</p>
+        <button class="addtocart" data-name="Masala Chai" data-price="29">Add to cart</button>
+    </div>
+
+    <!-- DESSERTS (Popular in India) -->
+    <div class="food-item">
+        <img src="Img/Chocolate cake 1Pc.jpg" alt="Chocolate Cake">
+        <h2>Chocolate Fudge Cake</h2>
+        <p>Rich chocolate cake slice with fudge frosting.</p>
+        <p>Price: ₹129.00</p>
+        <button class="addtocart" data-name="Chocolate Fudge Cake" data-price="129">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Cheesecake.jpg" alt="Cheesecake">
+        <h2>Classic Cheesecake</h2>
+        <p>Creamy cheesecake with berry topping.</p>
+        <p>Price: ₹149.00</p>
+        <button class="addtocart" data-name="Classic Cheesecake" data-price="149">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Chocolate cake 1Pc.jpg" alt="Brownie">
+        <h2>Chocolate Brownie</h2>
+        <p>Warm chocolate brownie with vanilla ice cream.</p>
+        <p>Price: ₹99.00</p>
+        <button class="addtocart" data-name="Chocolate Brownie" data-price="99">Add to cart</button>
+    </div>
+
      <footer class="footer_restaurant">
-        <p>&copy; 2023 Restaurant-6. All rights reserved.</p>
+        <p>&copy; 2023 Italiano Cafe & Grill. All rights reserved.</p>
      </footer>
      <script src="index.js"></script>
 </div>
