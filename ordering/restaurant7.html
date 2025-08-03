@@ -6,45 +6,97 @@
 </head>
 <body>
     <header>
-    <h1>Restaurant-7 Menu</h1>
+    <h1>Roma Italian Kitchen</h1>
 <div class="cart-icon">
             <a href="#" id="cart-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="RED" class="bi bi-cart-fill" viewBox="0 0 16 16">
-  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
 </svg><!-- Font Awesome shopping cart icon -->
                 <span id="cart-count">0</span> <!-- Element to display cart count -->
             </a>
         </div>
     </header>
     <div class="food-items-container">
+    
+    <!-- PIZZA (Indians Love Pizza) -->
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Dish X">
-        <h2>Dish X</h2>
-        <p>A delicious food item.</p>
-        <p>Price: $9.99</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/paneer_pizza.jpg" alt="Margherita Pizza">
+        <h2>Margherita Pizza</h2>
+        <p>Classic cheese pizza with tomato and basil - very popular in India.</p>
+        <p>Price: ₹299.00</p>
+        <button class="addtocart" data-name="Margherita Pizza" data-price="299">Add to cart</button>
     </div>
 
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Dish Y">
-        <h2>Dish Y</h2>
-        <p>Another great food option.</p>
-        <p>Price: $11.50</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/paneer_pizza.jpg" alt="Paneer Pizza">
+        <h2>Paneer Pizza</h2>
+        <p>Indian favorite with cottage cheese, capsicum, and onions.</p>
+        <p>Price: ₹349.00</p>
+        <button class="addtocart" data-name="Paneer Pizza" data-price="349">Add to cart</button>
     </div>
 
     <div class="food-item">
-        <img src="placeholder.jpg" alt="Dish Z">
-        <h2>Dish Z</h2>
-        <p>Try this amazing dish.</p>
-        <p>Price: $13.00</p>
-        <button class="addtocart">Add to cart</button>
+        <img src="Img/paneer_pizza.jpg" alt="Chicken Pizza">
+        <h2>Chicken Tikka Pizza</h2>
+        <p>Spiced chicken tikka pieces on pizza - loved by Indians.</p>
+        <p>Price: ₹399.00</p>
+        <button class="addtocart" data-name="Chicken Tikka Pizza" data-price="399">Add to cart</button>
     </div>
 
-    <!-- Add more food items here -->
+    <!-- PASTA (Simple & Popular) -->
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="White Sauce Pasta">
+        <h2>White Sauce Pasta</h2>
+        <p>Creamy pasta in white sauce - very popular with Indians.</p>
+        <p>Price: ₹229.00</p>
+        <button class="addtocart" data-name="White Sauce Pasta" data-price="229">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="Red Sauce Pasta">
+        <h2>Red Sauce Pasta</h2>
+        <p>Tangy tomato pasta with herbs - Indian favorite.</p>
+        <p>Price: ₹199.00</p>
+        <button class="addtocart" data-name="Red Sauce Pasta" data-price="199">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/Schezwan Noodles.jpg" alt="Paneer Pasta">
+        <h2>Paneer Pasta</h2>
+        <p>Pasta with paneer cubes in creamy sauce - Indian style.</p>
+        <p>Price: ₹249.00</p>
+        <button class="addtocart" data-name="Paneer Pasta" data-price="249">Add to cart</button>
+    </div>
+
+    <!-- SIDES & BREAD (Very Popular) -->
+    <div class="food-item">
+        <img src="Img/vada.jpg" alt="Garlic Bread">
+        <h2>Garlic Bread</h2>
+        <p>Crispy bread with garlic butter - extremely popular side dish.</p>
+        <p>Price: ₹129.00</p>
+        <button class="addtocart" data-name="Garlic Bread" data-price="129">Add to cart</button>
+    </div>
+
+    <div class="food-item">
+        <img src="Img/vada.jpg" alt="Cheese Garlic Bread">
+        <h2>Cheese Garlic Bread</h2>
+        <p>Garlic bread with melted cheese - Indian favorite.</p>
+        <p>Price: ₹159.00</p>
+        <button class="addtocart" data-name="Cheese Garlic Bread" data-price="159">Add to cart</button>
+    </div>
+
+    <!-- DESSERT (Popular) -->
+    <div class="food-item">
+        <img src="Img/Chocolate cake 1Pc.jpg" alt="Chocolate Cake">
+        <h2>Chocolate Brownie</h2>
+        <p>Warm chocolate brownie with ice cream - loved by Indians.</p>
+        <p>Price: ₹149.00</p>
+        <button class="addtocart" data-name="Chocolate Brownie" data-price="149">Add to cart</button>
+    </div>
+
 </div>
     <footer class="footer_restaurant">
-        <p>&copy; 2023 Restaurant-7. All rights reserved.</p>
+        <p>&copy; 2023 Roma Italian Kitchen. All rights reserved.</p>
     </footer>
     <script src="index.js"></script>
 </body>
