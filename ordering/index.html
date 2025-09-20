@@ -11,12 +11,16 @@
 
 <body>
   <h1>Choose the Restaurant & Food</h1>
-  <nav> <input type="search" id="Searchbox" placeholder="Search Here"> &nbsp;<svg xmlns="http://www.w3.org/2000/svg"
-      width="16" height="16" id="search" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-      <path
-        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-    </svg>
-    &nbsp;&nbsp;| &nbsp; &nbsp; <button data-filter="Indian">Indian Food</button>
+  <nav> <div class="searchBox">
+
+            <input class="searchInput"type="text" name="" placeholder="Search">
+            <button class="searchButton" href="#">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+        </div>
+        <div class="filters"> <button data-filter="Indian">Indian Food</button>
     &nbsp; <button data-filter="Chinese"> Chinese Food</button> &nbsp;
     <button data-filter="Italian">Italian Food</button> &nbsp;
     <button data-filter="Fast"> Fast Foods</button> &nbsp;
@@ -24,6 +28,7 @@
     <button data-filter="Top">Top Restaurant</button>&nbsp;
     <button data-filter="Deserts">Deserts</button>
     &nbsp; <button data-filter="Beverages">Beverages</button>
+  </div>
   </nav>
   <br>
   <section class="contai">
@@ -89,7 +94,7 @@
         </svg>3.5/5</span>
       </a>
     </div>
-    <div class="restu" id="rest6" data-category="Italian Chinese Cakes">
+    <div class="restu" id="rest6" data-category="Italian Chinese Cakes Beverages">
       <a href="/ordering/restaurant6.html">
       <p><img src="Img/Rest-6.webp" alt=""></p>Resturant-6
       <span class="st"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow"
@@ -123,8 +128,8 @@
       </a>
     </div>
     <div class="restu" id="rest9" data-category="Indian Fast Top">
-      <p><img src="Img/Rest-9.webp" alt=""></p>Resturant-9
       <a href="/ordering/restaurant9.html">
+      <p><img src="Img/Rest-9.webp" alt=""></p>Resturant-9
       <span class="st"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow"
           class="bi-star-fill" viewBox="0 0 16 16">
           <path
@@ -133,8 +138,8 @@
       </a>
     </div>
     <div class="restu" id="rest10" data-category="Indian Deserts Top">
-      <p><img src="Img/Rest-10.webp" alt=""></p>Resturant-10
       <a href="/ordering/restaurant10.html">
+      <p><img src="Img/Rest-10.webp" alt=""></p>Resturant-10
       <span class="st"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow"
           class="bi-star-fill" viewBox="0 0 16 16">
           <path

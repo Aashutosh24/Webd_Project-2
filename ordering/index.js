@@ -4,7 +4,10 @@ const restaurants = document.querySelectorAll('.restu');
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const selectedCategory = button.getAttribute('data-filter');
+    buttons.forEach(btn => btn.classList.remove('active'));
 
+      // make clicked one active
+      button.classList.add('active');
     restaurants.forEach(restu => {
       const categories = restu.getAttribute('data-category').split(" ");
 

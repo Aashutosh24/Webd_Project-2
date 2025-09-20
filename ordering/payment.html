@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .payment-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .payment-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      background: #eee;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .tab:hover, .tab.active {
+      background: #03A9F4;
+      color: white;
+    }
+
+    .payment-option {
+      display: none;
+    }
+
+    .payment-option.active {
+      display: block;
+    }
+
+    .upi-options img {
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .input-group {
+      margin: 15px 0;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .coupon {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .coupon input {
+      flex: 1;
+    }
+
+    .coupon button {
+      background-color: #03A9F4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pay-btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .upi-logo {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  }
+
+    .upi-logo.selected {
+      border: 2px solid #007bff; /* Bootstrap Blue */
+    }
+
+  </style>
+</head>
+
+<body>
+    <div class="payment-container">
+  <h2>Secure Payment</h2>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('upi')">UPI</div>
+    <div class="tab" onclick="showTab('netbanking')">Netbanking</div>
+    <div class="tab" onclick="showTab('credit')">Credit Card</div>
+    <div class="tab" onclick="showTab('debit')">Debit Card</div>
+  </div>
+
+  <div id="upi" class="payment-option active">
+    <div class="upi-options">
+      <img src="Img/gpay.webp" alt="GPay"  class="upi-logo">
+      <img src="Img/phonepe.png" alt="PhonePe" class="upi-logo">
+      <img src="Img/paytm.jpg" alt="Paytm" class="upi-logo">
+    </div>
+    <div class="input-group">
+      <label for="upi-id">Enter UPI ID</label>
+      <input type="text" id="upi-id" placeholder="example@upi">
+    </div>
+  </div>
+
+  <div id="netbanking" class="payment-option">
+    <div class="input-group">
+      <label for="bank">Select Bank</label>
+      <select id="bank">
+        <option>--Select--</option>
+        <option>SBI</option>
+        <option>HDFC</option>
+        <option>ICICI</option>
+        <option>Axis Bank</option>
+        <option>PNB</option>
+      </select>
+      <label for="netbanking-id">Enter Netbanking ID</label>
+      <input type="text" id="netbanking-id">
+      <label for="netbanking-password">Enter Netbanking Password</label>
+      <input type="password" id="netbanking-password">
+
+    </div>
+  </div>
+  
+
+  <div id="credit" class="payment-option">
+    <div class="input-group">
+      <label for="cc-number">Card Number</label>
+      <input type="text" id="cc-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+    </div>
+    <div class="input-group">
+      <label for="cc-name">Name on Card</label>
+      <input type="text" id="cc-name">
+    </div>
+    <div class="input-group">
+      <label for="cc-exp">Expiry</label>
+      <input type="month" id="cc-exp">
+    </div>
+    <div class="input-group">
+      <label for="cc-cvv">CVV</label>
+      <input type="password" id="cc-cvv" maxlength="3">
+    </div>
+  </div>
+
+  <div id="debit" class="payment-option">
+    <div class="input-group">
+      <label for="dc-number">Card Number</label>
+      <input type="text" id="dc-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+    </div>
+    <div class="input-group">
+      <label for="dc-name">Name on Card</label>
+      <input type="text" id="dc-name">
+    </div>
+    <div class="input-group">
+      <label for="dc-exp">Expiry</label>
+      <input type="month" id="dc-exp">
+    </div>
+    <div class="input-group">
+      <label for="dc-cvv">CVV</label>
+      <input type="password" id="dc-cvv" maxlength="3">
+    </div>
+  </div>
+
+  <div class="coupon">
+    <input type="text" placeholder="Enter Coupon Code">
+    <button>Apply</button>
+  </div>
+
+  <button class="pay-btn">Proceed to Pay</button>
+</div>
+
+<script>
+  function showTab(tabId) {
+    document.querySelectorAll('.payment-option').forEach(opt => {
+      opt.classList.remove('active');
+    });
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
+  document.querySelectorAll('.upi-logo').forEach(logo => {
+    logo.addEventListener('click', () => {
+      document.querySelectorAll('.upi-logo').forEach(el => el.classList.remove('selected'));
+      logo.classList.add('selected');
+    });
+  });
+</script>
+
+</body>
+</html>
