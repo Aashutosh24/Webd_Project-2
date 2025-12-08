@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 const app = express();
 const PORT = 5000;
@@ -12,35 +13,35 @@ app.use(bodyParser.json());
 
 // MongoDB connection
 mongoose.connect("mongodb://localhost:27017/deepsight", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
-.then(() => console.log("✅ Connected to MongoDB"))
-.catch((err) => console.error("❌ Connection failed:", err));
+    .then(() => console.log("✅ Connected to MongoDB"))
+    .catch((err) => console.error("❌ Connection failed:", err));
 
 // Schema and model
 const ContactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phoneno: String,
-  query: String
+    name: String,
+    email: String,
+    phoneno: String,
+    query: String
 });
 
 const Contact = mongoose.model("Contact", ContactSchema);
 
 // Route
 app.post("/api/contact", async (req, res) => {
-  try {
-    const newContact = new Contact(req.body);
-    await newContact.save();
-    res.status(200).json({ message: "Contact info saved successfully." });
-  } catch (err) {
-    res.status(500).json({ message: "Failed to save data", error: err });
-  }
+    try {
+        const newContact = new Contact(req.body);
+        await newContact.save();
+        res.status(200).json({ message: "Contact info saved successfully." });
+    } catch (err) {
+        res.status(500).json({ message: "Failed to save data", error: err });
+    }
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
 
@@ -52,7 +53,10 @@ const Datastore = require('nedb');
 const port = 3000; // You can change the port if needed
 
 // Initialize NeDB database
-const cartDb = new Datastore({ filename: 'cart.db', autoload: true });
+const cartDb = new Datastore({
+    filename: path.join(__dirname, 'cart.db'),
+    autoload: true
+});
 
 // Middleware
 app.use(cors()); // Enable CORS for all origins
@@ -62,46 +66,59 @@ app.use(express.json()); // Parse incoming JSON requests
 
 // Add item to cart
 app.post('/cart/add', (req, res) => {
-    const { userId, item } = req.body; // Assuming you have a way to identify users
+    const { userId, item } = req.body;
 
-    if (!userId || !item || !item.name || !item.price || !item.quantity) {
+    if (!userId || !item || !item.name || typeof item.price !== "number" || typeof item.quantity !== "number") {
         return res.status(400).json({ message: 'Invalid request body' });
     }
 
-    // Check if the user already has a cart
-    cartDb.findOne({ userId: userId }, (err, cart) => {
+    cartDb.findOne({ userId }, (err, cart) => {
         if (err) {
+            console.error("❌ findOne error:", err);
             return res.status(500).json({ message: 'Error finding cart' });
         }
 
         if (cart) {
-            // User has a cart, check if the item is already in it
-            const existingItemIndex = cart.items.findIndex(cartItem => cartItem.name === item.name);
+
+            if (!Array.isArray(cart.items)) {
+                cart.items = [];
+            }
+
+            const existingItemIndex = cart.items.findIndex(
+                cartItem => cartItem.name === item.name
+            );
 
             if (existingItemIndex > -1) {
-                // Item exists, update quantity
                 cart.items[existingItemIndex].quantity += item.quantity;
             } else {
-                // Item doesn't exist, add it
                 cart.items.push(item);
             }
 
-            // Update the cart in the database
-            cartDb.update({ userId: userId }, { $set: { items: cart.items } }, {}, (err, numReplaced) => {
-                if (err) {
-                    return res.status(500).json({ message: 'Error updating cart' });
+            cartDb.update(
+                { userId },
+                { $set: { items: cart.items } },
+                {},
+                (err) => {
+                    if (err) {
+                        console.error("❌ update error:", err);
+                        return res.status(500).json({ message: 'Error updating cart' });
+                    }
+                    res.json({ message: 'Item added to cart', cart });
                 }
-                res.json({ message: 'Item added to cart', cart: cart });
-            });
+            );
+
         } else {
-            // User doesn't have a cart, create a new one
-            const newCart = { userId: userId, items: [item] };
+
+            const newCart = { userId, items: [item] };
+
             cartDb.insert(newCart, (err, createdCart) => {
                 if (err) {
+                    console.error("❌ insert error:", err);
                     return res.status(500).json({ message: 'Error creating cart' });
                 }
                 res.status(201).json({ message: 'Cart created and item added', cart: createdCart });
             });
+
         }
     });
 });
@@ -112,14 +129,29 @@ app.get('/cart/:userId', (req, res) => {
 
     cartDb.findOne({ userId: userId }, (err, cart) => {
         if (err) {
+            console.error("GET CART ERROR:", err);
             return res.status(500).json({ message: 'Error finding cart' });
         }
-
-        if (cart) {
-            res.json({ cart: cart });
-        } else {
-            res.status(404).json({ message: 'Cart not found for this user' });
+        if (!cart) {
+            // ✅ Always return empty cart instead of 404
+            return res.status(200).json({
+                cart: {
+                    userId,
+                    items: []
+                }
+            });
         }
+        // if (cart) {
+        //     res.json({ cart: cart });
+        // } else {
+        //     res.status(404).json({ message: 'Cart not found for this user' });
+        // }
+        // });
+        if (!Array.isArray(cart.items)) {
+            cart.items = [];
+        }
+
+        res.status(200).json({ cart });
     });
 });
 
