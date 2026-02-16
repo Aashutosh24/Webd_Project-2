@@ -300,3 +300,6 @@ input[type=button]{
 input[type=button]:hover{
     opacity: 0.7;
 }
+.submit-btn{
+    cursor: pointer;
+}
