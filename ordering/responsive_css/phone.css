@@ -37,6 +37,9 @@ h1{
     height: 90vh;
     padding: 20px;
 }
+.restu img{
+    height: 65vh;
+}
 .st{
     position: relative;
         left: 100px;
