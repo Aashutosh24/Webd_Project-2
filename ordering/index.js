@@ -1,24 +1,87 @@
 const buttons = document.querySelectorAll('button[data-filter]');
-const restaurants = document.querySelectorAll('.restu');
+const restaurants = Array.from(document.querySelectorAll('.restu'));
+const searchInput = document.querySelector('.searchInput');
+const searchButton = document.querySelector('.searchButton');
+
+let currentCategory = 'all';
+const searchIndex = new Map();
+
+function categoryAllows(restu) {
+  if (currentCategory === 'all') return true;
+  const categories = (restu.getAttribute('data-category') || '').split(' ');
+  return categories.includes(currentCategory);
+}
+
+function matchesSearch(restu, query) {
+  if (!query) return true;
+  const items = searchIndex.get(restu) || [];
+  const restName = restu.textContent.toLowerCase();
+  return restName.includes(query) || items.some(item => item.includes(query));
+}
+
+function applyFilters() {
+  const query = (searchInput?.value || '').trim().toLowerCase();
+  restaurants.forEach(restu => {
+    const show = categoryAllows(restu) && matchesSearch(restu, query);
+    restu.style.display = show ? 'block' : 'none';
+  });
+}
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const selectedCategory = button.getAttribute('data-filter');
+    currentCategory = selectedCategory || 'all';
     buttons.forEach(btn => btn.classList.remove('active'));
-
-      // make clicked one active
-      button.classList.add('active');
-    restaurants.forEach(restu => {
-      const categories = restu.getAttribute('data-category').split(" ");
-
-      if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
-        restu.style.display = 'block';
-      } else {
-        restu.style.display = 'none';
-      }
-    });
+    button.classList.add('active');
+    applyFilters();
   });
 });
+
+async function buildSearchIndex() {
+  const tasks = restaurants.map(async (restu) => {
+    const link = restu.querySelector('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href) return;
+    const url = new URL(href, window.location.href);
+    try {
+      const response = await fetch(url.toString(), { cache: 'no-cache' });
+      if (!response.ok) return;
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const names = new Set();
+      doc.querySelectorAll('[data-name]').forEach(btn => {
+        const name = btn.getAttribute('data-name');
+        if (name) names.add(name.trim().toLowerCase());
+      });
+      doc.querySelectorAll('.food-item h2').forEach(h2 => {
+        const name = h2.textContent.trim();
+        if (name) names.add(name.toLowerCase());
+      });
+      searchIndex.set(restu, Array.from(names));
+    } catch (error) {
+      console.warn('Search index fetch failed for', url.toString(), error);
+    }
+  });
+  await Promise.all(tasks);
+}
+
+const searchIndexReady = buildSearchIndex();
+
+if (searchInput) {
+  searchInput.addEventListener('input', async () => {
+    await searchIndexReady;
+    applyFilters();
+  });
+}
+
+if (searchButton) {
+  searchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await searchIndexReady;
+    applyFilters();
+  });
+}
 
 document.querySelectorAll('.addtocart').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -28,7 +91,7 @@ document.querySelectorAll('.addtocart').forEach(btn => {
 
  // Function to add an item to the cart via the backend
         async function addToCart(itemName, itemPrice) {
-            const userId = 'user123'; // Replace with a dynamic user ID later
+            const userId = 'user123'; 
 
             console.log('Adding to cart:');
             console.log('userId:', userId);
@@ -45,8 +108,8 @@ document.querySelectorAll('.addtocart').forEach(btn => {
                         userId: userId,
                         item: {
                             name: itemName,
-                            price: itemPrice, // This should now be a number
-                            quantity: 1 // Add 1 item at a time
+                            price: itemPrice,
+                            quantity: 1
                         }
                     })
                 });
@@ -73,7 +136,7 @@ document.querySelectorAll('.addtocart').forEach(btn => {
                 return;
             }
 
-            const userId = 'user123'; // Replace with a dynamic user ID later
+            const userId = 'user123';
 
             try {
                 const response = await fetch(`http://localhost:3000/cart/${userId}`);
@@ -91,18 +154,14 @@ document.querySelectorAll('.addtocart').forEach(btn => {
             }
         }
 
-        // Add event listeners to "Add to cart" buttons
         document.querySelectorAll('.addtocart').forEach(button => {
             button.addEventListener('click', () => {
-                // Extract item name and price from data attributes
                 const itemName = button.dataset.name;
-                const itemPrice = parseFloat(button.dataset.price); // Parse to number
+                const itemPrice = parseFloat(button.dataset.price);
 
-                // Add console logs here to verify extraction
                 console.log('Extracted itemName:', itemName);
                 console.log('Extracted itemPrice:', itemPrice);
 
-                // Check if extracted values are valid before adding to cart
                 if (itemName && !isNaN(itemPrice)) {
                     addToCart(itemName, itemPrice); // Call the function to add to cart
                 } else {
@@ -120,7 +179,5 @@ document.querySelectorAll('.addtocart').forEach(btn => {
                 window.location.href = 'cart.html';
             });
         }
-
-        // Call updateCartCount on page load to display the initial count
         updateCartCount();
 

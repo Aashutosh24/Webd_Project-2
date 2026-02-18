@@ -1,0 +1,46 @@
+body {
+    font-family: 'Playfair Display', serif;
+    padding: 0%;
+    margin: 0%;
+}
+h1{
+    margin-left: 35px;
+}
+.searchBox {
+    position: relative;
+    bottom: 27px;
+    left: -12%;
+    margin-right: -40%;
+}
+
+.searchBox:hover>.searchButton {
+    top: -38px;
+    right: 2%;
+    position: relative;
+}
+
+.filters {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
+.contai {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.restu {
+    height: 90vh;
+}
+.st{
+    position: relative;
+        left: 100px;
+}
+#rest1 .st{
+    position: relative;
+    left: 98px;
+}
