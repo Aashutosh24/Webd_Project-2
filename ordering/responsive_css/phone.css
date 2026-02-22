@@ -47,12 +47,9 @@ h1 {
 
 
 .restu p img {
-    height: auto;
+    height: 270px;
     width: 100%;
     top: 0;
-}
-#rest10 p img{
-    height: 270px;
 }
 .st {
     position: relative;
