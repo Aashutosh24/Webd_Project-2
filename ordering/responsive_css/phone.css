@@ -41,6 +41,28 @@ h1{
 .restu p img{
     height: 65vh;
 }
+.contai{
+        grid-template-columns: 1fr;
+        margin-top: 15px;
+        margin-left: 10px;
+        grid-gap: 20px;
+    }
+
+    .restu{
+        margin: 20px;
+        height: auto;
+        padding: 15px;
+    }
+
+    .restu p{
+        height: auto;
+    }
+
+    .restu p img{
+        height: auto;
+        width: 100%;
+        top: 0;
+    }
 .st{
     position: relative;
         left: 100px;
