@@ -99,7 +99,7 @@ document.querySelectorAll('.addtocart').forEach(btn => {
             console.log('itemPrice:', itemPrice); // Check this value
 
             try {
-                const response = await fetch('http://localhost:3000/cart/add', {
+                const response = await fetch('https://food4all-1m72.onrender.com/cart/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ document.querySelectorAll('.addtocart').forEach(btn => {
             const userId = 'user123';
 
             try {
-                const response = await fetch(`http://localhost:3000/cart/${userId}`);
+                const response = await fetch(`https://food4all-1m72.onrender.com/cart/${userId}`);
                 const data = await response.json();
 
                 if (response.ok && data.cart) {

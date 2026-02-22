@@ -5,14 +5,15 @@ const bodyParser = require("body-parser");
 const path = require('path');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT)
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/deepsight", {
+mongoose.connect("mongodb+srv://food4all:food4all10@cluster0.p81n8ks.mongodb.net/?appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
