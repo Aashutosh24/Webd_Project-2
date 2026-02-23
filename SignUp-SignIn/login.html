@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSignin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bpmf+Zihi+Kai+Std&family=Recursive:wght@300..1000&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Math&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login">
+        <h2>Login</h2>
+        <form method="post" action="">
+            <div >
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter the password" required>
+            </div>
+            <div>
+                <button type="submit" id="log">Login</button>
+            </div>
+            <div class="additional-options">
+                <p><a href="forgot-password.html">Forgot Password?</a></p>
+                <hr style="border: none; height: 5px; background-color: #ccc; margin: 20px 0;">
+                <p> Or login through</p>
+
+
+
+                <button type="button" id="google-btn">
+                    <img src="../google" alt="G" style="width:20px;">
+                    Sign in with Google
+                </button>
+
+                <div id="sign-up-link">
+                    Don't have an account? &nbsp <a href="sign.html">Sign up</a>
+                </div>
+        </form>
+    </div>
+</body>
+<script>
+    let client;
+
+   window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "998630166906-4t8538t5auad8ft5406de8lg04pg8qmm.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+
+    document.getElementById('google-btn').addEventListener('click', () => {
+      google.accounts.id.prompt(); // Opens Google popup
+    });
+  };
+
+  function handleCredentialResponse(response) {
+    const token = response.credential;
+    const payload = parseJwt(token);
+
+    // Save login data
+    localStorage.setItem('googleUser', JSON.stringify({
+      name: payload.name,
+      email: payload.email,
+      picture: payload.picture
+    }));
+
+    // Redirect
+    window.location.href = "/index.html";
+  }
+
+  function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
+  document.getElementById('show-password').addEventListener('change', function () {
+    const pwd = document.getElementById('password');
+    pwd.type = this.checked ? 'text' : 'password';
+  });
+</script>
+
+</html>

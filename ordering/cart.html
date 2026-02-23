@@ -148,7 +148,7 @@
             cartItemsContainer.innerHTML = ''; // Clear existing items
 
             try {
-                const response = await fetch(`http://localhost:3000/cart/${userId}`);
+                const response = await fetch(`https://food4all-1m72.onrender.com/cart/${userId}`);
                 const data = await response.json();
 
                 if (response.ok && data.cart && data.cart.items.length > 0) {
@@ -207,10 +207,7 @@
                 }
             }
         }
-
-         // Function to add event listeners to cart item buttons
         function addCartItemEventListeners() {
-            // Event listener for increase quantity buttons
             document.querySelectorAll('.increase-quantity').forEach(button => {
                 button.addEventListener('click', async () => {
                     const input = button.previousElementSibling;
@@ -255,7 +252,7 @@
         async function updateItemQuantity(itemName, quantity) {
             const userId = 'user123'; // Replace with a dynamic user ID later
             try {
-                const response = await fetch(`http://localhost:3000/cart/update/${userId}/${itemName}`, {
+                const response = await fetch(`https://food4all-1m72.onrender.com/cart/update/${userId}/${itemName}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -280,7 +277,7 @@
         async function removeItem(itemName) {
              const userId = 'user123'; // Replace with a dynamic user ID later
             try {
-                const response = await fetch(`http://localhost:3000/cart/remove/${userId}/${itemName}`, {
+                const response = await fetch(`https://food4all-1m72.onrender.com/cart/remove/${userId}/${itemName}`, {
                     method: 'DELETE',
                 });
 
@@ -314,19 +311,15 @@
     messageArea.style.opacity = 1; // Make the message visible
 
     if (autoHide) {
-        // Set opacity to 0 after the specified delay to start the fade-out
         setTimeout(() => {
-            messageArea.style.opacity = 0; // <-- Corrected to 0
-        }, 3000); // Set the desired delay before fading out (e.g., 3000ms for 3 seconds)
+            messageArea.style.opacity = 0; 
+        }, 3000);
     }
 }
 
 
-
-        // Call the function to display cart items when the page loads
         displayCartItems();
 
-        // Add event listener for the cart button in the header (if you have one)
         const cartButton = document.getElementById('cart-button');
         if (cartButton) {
             cartButton.addEventListener('click', (event) => {
@@ -334,8 +327,6 @@
                  window.location.reload(); // Example: reload the cart page
             });
         }
-
-         // Function to update the cart count in the header (reused from restaurant pages)
         async function updateCartCount() {
             const cartCountElement = document.getElementById('cart-count');
             if (!cartCountElement) {
@@ -346,7 +337,7 @@
             const userId = 'user123'; // Replace with a dynamic user ID later
 
             try {
-                const response = await fetch(`http://localhost:3000/cart/${userId}`);
+                const response = await fetch(`https://food4all-1m72.onrender.com/cart/${userId}`);
                 const data = await response.json();
 
                 if (response.ok && data.cart) {

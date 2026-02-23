@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styleSignin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://accounts.google.com/gsi/client"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="sign">
+    <form id="signup-form">
+      <h2>Sign Up</h2>
+      <div>
+        <label for="sign-name">Name:</label>
+        <input type="text" class="sign-input" id="sign-name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div>
+        <label for="sign-username">Email:</label>
+        <input type="email" class="sign-input" id="sign-username" name="username" placeholder="Enter your email" required>
+      </div>
+      <div class="sign-input password-field">
+        <label for="sign-password" style="
+    display: inline;" >Password:</label>
+        <div class="input-wrapper">
+          <input type="password" id="sign-password" placeholder="Enter your password" required style="
+    display: inline;">
+          <span class="toggle-eye" onclick="togglePassword('sign-password', this)">👁️</span>
+        </div>
+      </div>
+      <div class="sign-input password-field">
+        <label for="sign-con-password" style="
+    display: inline;">Confirm Password:</label>
+        <div class="input-wrapper">
+          <input type="password" id="sign-con-password" placeholder="Confirm your password" required style="
+    display: inline;">
+          <span class="toggle-eye" onclick="togglePassword('sign-con-password', this)">👁️</span>
+        </div>
+      </div>
+      <div>
+        <button type="submit" id="register">Register</button>
+      </div>
+      <div>
+        <p class="apara"> Or Register through</p>
+        <button type="button" id="google-btn">
+          <img src="../google" alt="G" style="width:20px;">
+          Sign in with Google
+        </button>
+      </div>
+      <div id="login-link">
+        <p><a href="login.html">Already a user. Login Here</a></p>
+      </div>
+    </form>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Google Sign-In
+      if (typeof google !== "undefined") {
+        google.accounts.id.initialize({
+          client_id: "998630166906-4t8538t5auad8ft5406de8lg04pg8qmm.apps.googleusercontent.com",
+          callback: handleCredentialResponse
+        });
+        document.getElementById('google-btn').addEventListener('click', () => {
+          google.accounts.id.prompt();
+        });
+      }
+
+      function handleCredentialResponse(response) {
+        const token = response.credential;
+        const payload = parseJwt(token);
+        localStorage.setItem('googleUser', JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          picture: payload.picture
+        }));
+        window.location.href = "/index.html";
+      }
+
+      function parseJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+      }
+
+      // Toggle password visibility
+      window.togglePassword = function(inputId, eyeIcon) {
+        const input = document.getElementById(inputId);
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        eyeIcon.textContent = isPassword ? "🙈" : "👁️";
+      };
+
+      // Form submit
+      document.getElementById("signup-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const name = document.getElementById("sign-name").value;
+        const email = document.getElementById("sign-username").value;
+        const password = document.getElementById("sign-password").value;
+        const confirmPassword = document.getElementById("sign-con-password").value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match");
+          return;
+        }
+
+        // For simplicity, we are not saving password in DB here (can expand if needed)
+        try {
+          const response = await fetch("http://localhost:5000/api/save-user", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, picture: "" })
+          });
+
+          const data = await response.json();
+          alert(data.message);
+          localStorage.setItem("googleUser", JSON.stringify({ name, email, picture: "" }));
+          window.location.href = "/index.html";
+        } catch (err) {
+          console.error(err);
+          alert("Something went wrong");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
